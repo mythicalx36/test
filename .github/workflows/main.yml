@@ -1,0 +1,21 @@
+name: Basic Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  example:
+    if: github.event_name != 'pull_request'  # Apply condition here at the job level
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Display message
+        run: echo "Workflow has been triggered successfully!"
